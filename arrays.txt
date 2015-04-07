@@ -1,0 +1,52 @@
+{
+  "data": [
+    [
+      "Hurston",
+      "Zora Neale",
+      "Their Eyes Were Watching God",
+      "23456756748",
+      "bookcover"
+      
+    ],
+    [
+      "Lael Greer",
+      "Systems Administrator",
+      "London",
+      "6733",
+      "2009/02/27"
+      
+    ],
+    [
+      "Jonas Alexander",
+      "Developer",
+      "San Francisco",
+      "8196",
+      "2010/07/14"
+      
+    ],
+    [
+      "Shad Decker",
+      "Regional Director",
+      "Edinburgh",
+      "6373",
+      "2008/11/13"
+      
+    ],
+    [
+      "Michael Bruce",
+      "Javascript Developer",
+      "Singapore",
+      "5384",
+      "2011/06/27"
+      
+    ],
+    [
+      "Donna Snider",
+      "Customer Support",
+      "New York",
+      "4226",
+      "2011/01/25"
+      
+    ]
+  ]
+}

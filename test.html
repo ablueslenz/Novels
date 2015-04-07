@@ -1,0 +1,37 @@
+<html>
+<head>
+  <title>Search Engine in PHP</title>
+</head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+<body>
+
+
+
+  <form action="search.php" method="get">
+
+      Search Engine: <input type="text"  id="keyword" name="value" placeholder="Title,Author,ISBN" />
+        <button id="searchbtn" name="search" value="Search Now">Submit</button>
+
+
+  </form>
+  <div id="result"></div>
+<hr>
+
+<script>
+  $(function(){
+    $('#searchbtn').on('click', function(){
+      //alert("search.php?q=" + $('#keyword').val());
+      //console.log("getresult.php?q=" + $('#keyword').val());
+      $.ajax({
+            url: "search.php?q=" + $('#keyword').val(),
+            success:function(d){
+                $('#result').html(d);
+            }
+        });
+    });
+  });
+</script>
+</body>
+</html>
+

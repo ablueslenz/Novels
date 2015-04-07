@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Novels of the African Diaspora</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    
+
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+         <a class="navbar-brand" href="index.html">Novels of the African Diaspora</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+         <ul class="nav navbar-nav" navbar-right>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="search.html">Search</a></li>
+                <li><a href="dashboard.html">Data</a></li>
+                <li><a href="maps.html">Maps</a></li>
+                 <li><a href="etexts.html">E-Texts</a></li>
+                <li><a href="abengblog.html">Abeng</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                  </ul> 
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="search" placeholder="Search Site" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Go</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+          
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <br>
+     <div class="container"> 
+      <div class="page-header" style="background-color: #669900">
+  <h1>Data Visualizations</h1>
+  <p>Use research to gather data about various elements of the novels included in the database. You can create visualizations to add to any of your own projects. </p>
+</div>
+
+
+
+<!--Div that will hold the dashboard-->
+<div id="dashboard_div">
+      <!--Divs that will hold each control and chart-->
+      <div id="filter_div"></div>
+      <div id="chart_div"></div>
+    
+
+<hr>
+  
+ 
+
+
+      <!--Divs that will hold each control and chart-->
+      <div id="filter2_div"></div>
+      <div id="chart2_div"></div>
+      
+
+<hr>
+
+      <div id="filter4_div"></div>
+      <div id="chart4_div"></div>
+
+</div>
+  
+
+     <footer  style="background-color: #669900">
+        <p>&copy; eko design &amp; consulting 2015</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+   
+    
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<!--Controls 1 Authors By Continent-->
+
+<script type="text/javascript">
+
+      // Load the Visualization API and the controls package.
+      google.load('visualization', '1.0', {'packages':['controls']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawDashboard);
+
+      // Callback that creates and populates a data table,
+      // instantiates a dashboard, a range slider and a pie chart,
+      // passes in the data and draws it.
+      function drawDashboard() {
+
+        // Create our data table.
+        var data = google.visualization.arrayToDataTable([
+          ['Name', 'Authors By Continents/Territories'],
+          ['North America' , 400],
+          ['Africa', 250],
+          ['Asia', 13],
+          ['Australia', 1],
+          ['Europe', 40],
+          ['South America', 175],
+          ['Caribbean', 125]
+        ]);
+
+        // Create a dashboard.
+        var dashboard = new google.visualization.Dashboard(
+            document.getElementById('dashboard_div'));
+
+        // Create a range slider, passing some options
+        var donutRangeSlider = new google.visualization.ControlWrapper({
+          'controlType': 'NumberRangeFilter',
+          'containerId': 'filter_div',
+          'options': {
+            'filterColumnLabel': 'Authors By Continents/Territories'
+          }
+        });
+
+        // Create a pie chart, passing some options
+        var pieChart = new google.visualization.ChartWrapper({
+          'chartType': 'PieChart',
+          'containerId': 'chart_div',
+          'options': {
+            'width': 300,
+            'height': 300,
+            'pieSliceText': 'value',
+            'legend': 'right'
+          }
+        });
+
+        // Establish dependencies, declaring that 'filter' drives 'pieChart',
+        // so that the pie chart will only display entries that are let through
+        // given the chosen slider range.
+        dashboard.bind(donutRangeSlider, pieChart);
+
+        // Draw the dashboard.
+        dashboard.draw(data);
+      }
+    </script>
+
+<!--Controls 2 Sexes-->
+
+<script type="text/javascript">
+
+      // Load the Visualization API and the controls package.
+      google.load('visualization', '1.0', {'packages':['controls']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawDashboard);
+
+      // Callback that creates and populates a data table,
+      // instantiates a dashboard, a range slider and a pie chart,
+      // passes in the data and draws it.
+      function drawDashboard() {
+
+        // Create our data table.
+        var data = google.visualization.arrayToDataTable([
+          ['Countries', 'Females', 'Males'],
+          ['USA' , 145,150],
+          ['Nigeria', 45, 105],
+          ['Jamaica', 9, 10],
+          ['Brazil', 100, 150],
+          ['Ghana', 60, 85],
+          ['France', 50,50],
+          ['South Africa', 25, 65]
+        ]);
+
+        // Create a dashboard.
+        var dashboard = new google.visualization.Dashboard(
+            document.getElementById('dashboard2_div'));
+
+
+        // Create a pie chart, passing some options
+        var barChart = new google.visualization.ChartWrapper({
+          'chartType': 'BarChart',
+          'containerId': 'chart2_div',
+          'options': {
+            hAxis: {
+            title: 'Total Novelists',
+          minValue: 0}
+          
+
+           vAxis: {
+          title: 'Sex'
+        },
+            
+            legend: 'right'
+          }
+        });
+
+        // Establish dependencies, declaring that 'filter' drives 'pieChart',
+        // so that the pie chart will only display entries that are let through
+        // given the chosen slider range.
+        dashboard.bind(genderRangeSlider, BarChart);
+
+        // Draw the dashboard.
+        dashboard.draw(data);
+      }
+    </script>
+
+
+
+
+    <!--Controls 3 Genres-->
+    <script type="text/javascript">
+
+      // Load the Visualization API and the controls package.
+      google.load('visualization', '1.0', {'packages':['controls']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawDashboard);
+
+      // Callback that creates and populates a data table,
+      // instantiates a dashboard, a range slider and a pie chart,
+      // passes in the data and draws it.
+      function drawDashboard() {
+
+        // Create our data table.
+        var data = google.visualization.arrayToDataTable([
+          ['Name', 'Subgenres in NAD'],
+          ['Realism' , 525],
+          ['Urban Realism', 200],
+          ['Historical Fiction', 175],
+          ['Crime/Detective', 75],
+          ['Mystery', 25],
+          ['Bildungsroman', 130],
+          ['Sci-Fi', 37],
+          ['Fantasy', 10],
+          ['Graphical Novel', 15],
+          ['Horror', 20],
+          ['Romance', 4],
+          ['Historical Romance', 15],
+          ['Other', 3]
+        ]);
+
+        // Create a dashboard.
+        var dashboard = new google.visualization.Dashboard(
+            document.getElementById('dashboard4_div'));
+
+        // Create a range slider, passing some options
+        var genreRangeSlider = new google.visualization.ControlWrapper({
+          'controlType': 'NumberRangeFilter',
+          'containerId': 'filter4_div',
+          'options': {
+            'filterColumnLabel': 'Subgenres in NAD'
+          }
+        });
+
+        // Create a pie chart, passing some options
+        var pieChart = new google.visualization.ChartWrapper({
+          'chartType': 'PieChart',
+          'containerId': 'chart4_div',
+          'options': {
+            'width': 300,
+            'height': 300,
+            'pieSliceText': 'value',
+            'legend': 'right'
+          }
+        });
+
+        // Establish dependencies, declaring that 'filter' drives 'pieChart',
+        // so that the pie chart will only display entries that are let through
+        // given the chosen slider range.
+        dashboard.bind(genreRangeSlider, pieChart);
+
+        // Draw the dashboard.
+        dashboard.draw(data);
+      }
+    </script>
+
+
+
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+
+  </body>
+</html>

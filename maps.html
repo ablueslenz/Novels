@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Novels of the African Diaspora</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="simpleresponsivetabs/css/responsivetabs.css">
+    <style>
+
+      div[data-responsive-tabs]
+      {
+        display : none;
+      }
+
+    </style>
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+         <a class="navbar-brand" href="index.html">Novels of the African Diaspora Online</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+         <ul class="nav navbar-nav" navbar-right>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="search.html">Search</a></li>
+                <li><a href="dashboard.html">Data</a></li>
+                <li><a href="maps.html">Maps</a></li>
+                 <li><a href="etexts.html">E-Texts</a></li>
+                <li><a href="abengblog.html">Abeng</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                  </ul> 
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="search" placeholder="Search Site" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Go</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+       
+    <br>
+     <div class="container"> 
+      <div class="page-header" style="background-color: #669900">
+          <h1>Map Visualization Panel</h1>
+          <p>Map visualizations offers another perspective from which scholars can considered the evolution of the novel in the African Diaspora. </p>
+      </div>
+       
+<div data-responsive-tabs>
+      <nav>
+        <ul>
+          <li>
+            <a href="#one">Novelists' Birth Cities</a>
+          </li>
+          <li>
+            <a href="#two">Publishers' Cities</a>
+          </li>
+          <li>
+            <a href="#three">Countries Represented</a>
+          </li>                   
+        </ul>
+      </nav>
+      <div class="content">
+        <section id="one">
+          <h3>Map 1</h3>
+           <div id="map-canvas" style="width: 100%; height: 1000px;">
+        </div>
+        </section>
+        <section id="two">
+          <h3>Map 2</h3>
+           <div id="map-canvas2" style="width: 100%; height: 1000px;">
+        </div>
+        </section>
+        <section id="three">
+          <h3>Map 3</h3>
+           <div id="map-canvas3" style="width: 100%; height: 1000px;">
+        </div>
+        </section>                
+      </div>
+    </div>
+    
+
+
+
+
+       <hr>
+
+     <footer style="background-color: #669900">
+        <p>&copy; eko design &amp; consulting 2015</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+      
+   <!--Google Map 1-->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script>
+var map, layer, layer3;
+
+function initialize() {
+  var africa = new google.maps.LatLng(7.1881, -21.0936);
+
+  map = new google.maps.Map(document.getElementById('map-canvas'), {
+    center: africa,
+    zoom: 3
+  });
+
+  layer = new google.maps.FusionTablesLayer({
+    query: {
+      select: 'Author Birth City and/or State',
+      from: '1ZhqVJ3Wba2cZyjUGO2j0agZ3tvU-52QmgQ1MD_r2'
+    }
+  });
+  layer.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+
+
+<!--Google Map 3-->
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script>
+var map, layer;
+
+function initialize() {
+  var africa = new google.maps.LatLng(7.1881, -21.0936);
+
+  map3 = new google.maps.Map(document.getElementById('map-canvas3'), {
+    center: africa,
+    zoom: 3
+  });
+
+  layer3 = new google.maps.FusionTablesLayer({
+    query: {
+      select: 'Author Birth Country',
+      from: '1ZhqVJ3Wba2cZyjUGO2j0agZ3tvU-52QmgQ1MD_r2'
+    }
+  });
+  layer3.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+
+
+
+
+
+<!--Tab Scripts-->
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+   <script src="simpleresponsivetabs/js/responsivetabs.js"></script>
+    <script>
+      $(document).ready(function ()
+      { 
+        $(document).on('responsive-tabs.initialised', function (event, el)
+        {
+          console.log(el);
+        });
+
+        $(document).on('responsive-tabs.change', function (event, el, newPanel)
+        {
+          console.log(el);
+          console.log(newPanel);
+        });
+
+        $('[data-responsive-tabs]').responsivetabs(
+        {
+          initialised : function ()
+          {
+            console.log(this);
+          },
+
+          change : function (newPanel)
+          {
+            console.log(newPanel);
+          }
+        });
+
+
+      });
+    </script>
+
+
+
+
+    
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
